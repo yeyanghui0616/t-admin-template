@@ -1,5 +1,5 @@
 <template>
-    主页
+    admin/user.vue
 </template>
 
 <script setup lang='ts'>

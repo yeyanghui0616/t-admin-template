@@ -1,5 +1,5 @@
 <template>
-    主页
+    memeber/mail.vue
 </template>
 
 <script setup lang='ts'>
