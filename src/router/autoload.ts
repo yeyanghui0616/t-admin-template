@@ -1,7 +1,7 @@
 import { RouteRecordRaw } from 'vue-router';
-const layouts = import.meta.glob("../layouts/*.vue")
+const layouts = import.meta.globEager("../layouts/*.vue")
 
-const views = import.meta.glob("../views/**/*.vue")
+const views = import.meta.globEager("../views/**/*.vue")
 console.log('views', views)
 
 console.log(layouts)
@@ -38,7 +38,7 @@ function getChildrenRoutes(layoutRoute:RouteRecordRaw):RouteRecordRaw[]{
 }
 
 
-function getRouteByModule(file:string,module:() => Promise<unknown>){
+function getRouteByModule(file:string,module: { (): Promise<unknown>; (): Promise<unknown>; default?: any; }){
     // 根据文件名，得到 /admin 
     // 方法一
     // console.log('file', file.split('/').pop()?.split('.')[0])
@@ -46,12 +46,14 @@ function getRouteByModule(file:string,module:() => Promise<unknown>){
     // console.log('first', file.match(/\.\.\/layouts\/(?<name>.+?)\.vue/i)?.groups?.name)
     // 方法三
     const name = file.replace(/.+layouts\/|.+views\/|\.vue/gi,'')
+    console.log('module.default', module.default)
     const route = {
         path: `/${name}`,
         name:name.replace('/','.'),
-        component: module
+        component: module.default
     } as RouteRecordRaw
-    return route
+
+    return Object.assign(route,module.default.route)
 }
 
 
