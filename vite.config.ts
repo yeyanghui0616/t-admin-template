@@ -10,6 +10,7 @@ export default ({command,mode}:ConfigEnv)=>{
   const root = process.cwd()
   const env = loadEnv(mode, root)
   parseEnv(env)
+  
   return {
     plugins: [vue()],
     resolve:{
