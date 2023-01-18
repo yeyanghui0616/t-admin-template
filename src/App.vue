@@ -11,5 +11,7 @@
 import { env } from './types/helper';
 import userApi from '@/api/userApi'
 const a =  await userApi.info()
+const b =  await userApi.login()
 console.log('a', a)
+console.log('b', b)
 </script>

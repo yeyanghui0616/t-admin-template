@@ -1,16 +1,25 @@
 import {http} from '@/plugins/axios'
 
-interface User{
+interface IUser{
     name:string
     age?: number
     avator?: string
 }
+interface ILogin{
+    token:string
+}
 
 class userApi {
     info(){
-        return http.request<User>({
+        return http.request<IUser>({
             url: 'get',
             method:'GET'
+        })
+    }
+    login(){
+        return http.request<ILogin>({
+            url: 'login',
+            method:'POST'
         })
     }
 }
