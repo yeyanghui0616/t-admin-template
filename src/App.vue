@@ -9,11 +9,7 @@
 
 <script setup lang="ts">
 import { env } from './types/helper';
-
-console.log(env )
-console.log(typeof import.meta.env.VITE_SOME_KEY)
-
-const responce = await fetch(`http://127.0.0.1:5173/api/get`).then(res=>res.json())
-console.log('responce', responce)
-
+import userApi from '@/api/userApi'
+const a =  await userApi.info()
+console.log('a', a)
 </script>
