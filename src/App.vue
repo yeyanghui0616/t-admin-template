@@ -8,7 +8,12 @@
 </template>
 
 <script setup lang="ts">
-const a:ViteEnv = {
-    VITE_API_URL:1
-}
+import { env } from './types/helper';
+
+console.log(env )
+console.log(typeof import.meta.env.VITE_SOME_KEY)
+
+const responce = await fetch(`http://127.0.0.1:5173/api/get`).then(res=>res.json())
+console.log('responce', responce)
+
 </script>

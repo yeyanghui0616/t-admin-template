@@ -8,7 +8,3 @@ export function setupPlugins(isBuild:boolean,env:ViteEnv){
     plugins.push(setupMockPlugin(isBuild))
     return plugins
 }
-
-type Record<T extends keyof any,D>= {
-    [P in T]:D
-}
