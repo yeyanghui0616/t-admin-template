@@ -8,5 +8,7 @@
 </template>
 
 <script setup lang="ts">
-
+const a:ViteEnv = {
+    VITE_API_URL:1
+}
 </script>
