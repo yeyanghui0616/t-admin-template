@@ -1,8 +1,16 @@
-<template>
-    <input type="text" placeholder="请输入手机号或邮箱" />
-</template>
+<script setup lang="ts">
+const props = defineProps({
+    modelValue: String,
+});
+</script>
 
-<script setup lang="ts"></script>
+<template>
+    <input
+        type="text"
+        :value="modelValue"
+        @input="$emit('update:modelValue', ($event.target as any).value)"
+    />
+</template>
 
 <style lang="scss" scoped>
 input {

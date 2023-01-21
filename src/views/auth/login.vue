@@ -1,3 +1,11 @@
+<script setup lang="ts">
+import { reactive } from "vue";
+const form = reactive<{ username: string | number; password: string }>({
+    username: "yeyanghui",
+    password: "",
+});
+</script>
+
 <template>
     <div
         class="bg-gray-400 0 h-screen flex justify-center items-start md:items-center p-2 md:pd-0"
@@ -8,8 +16,15 @@
             <div class="p-6">
                 <h2 class="text-center test-gray-700 text-lg mt-3">会员登录</h2>
                 <div class="mt-10">
-                    <yh-input />
-                    <yh-input class="mt-5" />
+                    <yh-input
+                        v-model="form.username"
+                        placeholder="请输入用户名"
+                    />
+                    <yh-input
+                        class="mt-5"
+                        v-model="form.password"
+                        placeholder="请输入密码"
+                    />
                 </div>
                 <yh-button />
                 <div class="flex gap-3 justify-center mt-5">
@@ -28,7 +43,5 @@
         </div>
     </div>
 </template>
-
-<script setup lang="ts"></script>
 
 <style lang="scss" scoped></style>
