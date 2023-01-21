@@ -1,9 +1,5 @@
-<template>
-    memeber/mail.vue
-</template>
+<template>memeber/mail.vue</template>
 
-<script setup lang='ts'>
-</script>
+<script setup lang="ts"></script>
 
-<style lang='scss' scoped>
-</style>
+<style lang="scss" scoped></style>

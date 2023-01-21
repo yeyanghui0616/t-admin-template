@@ -1,0 +1,44 @@
+<template>
+    <div
+        class="bg-gray-400 0 h-screen flex justify-center items-start md:items-center p-2 md:pd-0"
+    >
+        <div
+            class="w-[720px] translate-y-32 md:translate-y-0 bg-white rounded-md md:grid grid-cols-2 shadow-md"
+        >
+            <div class="p-6">
+                <h2 class="text-center test-gray-700 text-lg mt-3">会员登录</h2>
+                <div class="mt-10">
+                    <yhInput />
+                    <yhInput class="mt-5" />
+                    <!-- <input type="text" placeholder="请输入手机号或邮箱" />
+                    <input
+                        type="text"
+                        placeholder="请输入手机号或邮箱"
+                        class="mt-5"
+                    /> -->
+                </div>
+                <yhButton />
+                <div class="flex gap-3 justify-center mt-5">
+                    <yhLink>网站首页</yhLink>
+                    <yhLink>会员注册</yhLink>
+                    <yhLink>找回密码</yhLink>
+                    <yhLink>哈哈哈哈</yhLink>
+                </div>
+            </div>
+            <div>
+                <img
+                    src="/images/login.jpg"
+                    class="h-80 w-full object-cover hidden md:block"
+                />
+            </div>
+        </div>
+    </div>
+</template>
+
+<script setup lang="ts">
+import yhInput from "@/components/form/yh-input.vue";
+import yhButton from "@/components/form/yh-button.vue";
+import yhLink from "@/components/form/yh-link.vue";
+</script>
+
+<style lang="scss" scoped></style>
