@@ -1,7 +1,7 @@
 import { RouteRecordRaw } from 'vue-router';
-const layouts = import.meta.globEager("../layouts/*.vue")
+const layouts = import.meta.glob("../layouts/*.vue",{eager:true})
 
-const views = import.meta.globEager("../views/**/*.vue")
+const views = import.meta.glob("../views/**/*.vue",{eager:true})
 
 function getRoutes() {
     const layoutRoutes = [] as RouteRecordRaw[]
