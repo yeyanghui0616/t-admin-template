@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactive } from "vue";
 const form = reactive<{ username: string | number; password: string }>({
-    username: "yeyanghui",
+    username: "",
     password: "",
 });
 </script>

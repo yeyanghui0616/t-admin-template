@@ -1,6 +1,9 @@
 <script setup lang="ts">
-const props = defineProps({
-    modelValue: String,
+type Props = {
+    modelValue: string;
+};
+const props = withDefaults(defineProps<Props>(), {
+    modelValue: "11122",
 });
 </script>
 
