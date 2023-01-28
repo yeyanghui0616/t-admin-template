@@ -1,5 +1,5 @@
-<template>主页</template>
-
 <script setup lang="ts"></script>
+
+<template>主页</template>
 
 <style lang="scss" scoped></style>

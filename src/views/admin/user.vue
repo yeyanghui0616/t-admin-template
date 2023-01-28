@@ -1,6 +1,6 @@
-<template>admin/user.vue</template>
-
 <script setup lang="ts"></script>
+
+<template>admin/user.vue</template>
 
 <style lang="scss" scoped></style>
 

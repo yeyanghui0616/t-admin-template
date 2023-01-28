@@ -1,3 +1,5 @@
+<script setup lang="ts"></script>
+
 <template>
     <!-- component -->
 
@@ -341,7 +343,5 @@
         </div>
     </div>
 </template>
-
-<script setup lang="ts"></script>
 
 <style lang="scss" scoped></style>
