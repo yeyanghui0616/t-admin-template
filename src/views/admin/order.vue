@@ -1,24 +1,26 @@
 <script setup lang="ts">
-import { Form, Field, defineRule, configure } from "vee-validate";
+import v from "@/plugins/validate";
 import { ref } from "vue";
-import { required, min, max, confirmed, email } from "@vee-validate/rules";
-import zh_CN from "@vee-validate/i18n/dist/locale/zh_CN.json";
-import { localize } from "@vee-validate/i18n";
+const { Form, Field } = v;
+// import { Form, Field, defineRule, configure } from "vee-validate";
+// import { required, min, max, confirmed, email } from "@vee-validate/rules";
+// import zh_CN from "@vee-validate/i18n/dist/locale/zh_CN.json";
+// import { localize } from "@vee-validate/i18n";
 
-configure({
-    // 配置中文
-    generateMessage: localize("zh_CN", zh_CN),
-});
+// configure({
+//     // 配置中文
+//     generateMessage: localize("zh_CN", zh_CN),
+// });
 
-defineRule("required", required);
-defineRule("email", email);
-defineRule("min", min);
-defineRule("max", max);
+// defineRule("required", required);
+// defineRule("email", email);
+// defineRule("min", min);
+// defineRule("max", max);
 
 const account = ref<string>("");
-const emailRule = (value: any) => {
-    return /@/.test(value) ? true : "邮箱格式错误";
-};
+// const emailRule = (value: any) => {
+//     return /@/.test(value) ? true : "邮箱格式错误";
+// };
 
 const onSubmit = (value: object) => {
     console.log(value);
