@@ -19,10 +19,7 @@ const { handleSubmit, errors } = v.useForm({
         password: "122",
     },
     validationSchema: {
-        username: v.yup
-            .string()
-            .required("用户名不能为空")
-            .email("邮箱格式错误"),
+        username: v.yup.string().required().email().label("账号"),
         password: {
             required: true,
         },
