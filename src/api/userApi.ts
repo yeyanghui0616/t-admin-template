@@ -16,10 +16,11 @@ class userApi {
             method:'GET'
         })
     }
-    login(){
+    login(data: any){
         return http.request<ILogin>({
             url: 'login',
-            method:'POST'
+            method:'POST',
+            data
         })
     }
 }

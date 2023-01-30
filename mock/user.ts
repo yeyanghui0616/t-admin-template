@@ -9,7 +9,7 @@ export default [
                 code: 200,
                 message:'请求成功',
                 type:'success',
-                data: {
+                result: {
                     name: '小小叶',
                 },
             }
@@ -23,7 +23,7 @@ export default [
                 code: 200,
                 message:'登录成功',
                 type:'success',
-                data: {
+                result: {
                     token: Random.string(10)
                 },
             }

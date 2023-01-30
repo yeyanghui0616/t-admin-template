@@ -1,5 +1,4 @@
 import axios,{RawAxiosRequestConfig} from 'axios'
-import { reject } from 'lodash'
 
 export default class Axios {
     private instance

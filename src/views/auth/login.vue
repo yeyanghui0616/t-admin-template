@@ -5,12 +5,20 @@
 //     password: "",
 // });
 
+import userApi from "@/api/userApi";
 import v from "@/plugins/validate";
+import { store } from "@/utils";
 
 const { Form, Field, ErrorMessage } = v;
 
-const onSubmit = (values: any) => {
+const onSubmit = async (values: any) => {
     console.log("values", values);
+    const {
+        result: { token },
+    } = await userApi.login(values);
+    console.log("res", token);
+    store.set("token", { expire: 100, token });
+    // localStorage.setItem("token", token);
 };
 
 // 方式一
@@ -43,6 +51,7 @@ const schema = {
                             class="yh-input"
                             label="用户名"
                             placeholder="请输入邮箱或手机号"
+                            value="yh@qq.com"
                         />
                         <div v-if="errors.account" class="yh-error">
                             {{ errors.account }}
@@ -54,6 +63,7 @@ const schema = {
                             class="yh-input mt-3"
                             label="密码"
                             type="password"
+                            value="zxcvbnm000"
                         />
                         <div v-if="errors.password" class="yh-error">
                             {{ errors.password }}
