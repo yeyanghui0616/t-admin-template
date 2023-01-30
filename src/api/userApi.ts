@@ -1,28 +1,28 @@
-import {http} from '@/plugins/axios'
+import { http } from "@/plugins/axios";
 
-interface IUser{
-    name:string
-    age?: number
-    avator?: string
+interface IUser {
+	name: string;
+	age?: number;
+	avator?: string;
 }
-interface ILogin{
-    token:string
+interface ILogin {
+	token: string;
 }
 
 class userApi {
-    info(){
-        return http.request<IUser>({
-            url: 'get',
-            method:'GET'
-        })
-    }
-    login(data: any){
-        return http.request<ILogin>({
-            url: 'login',
-            method:'POST',
-            data
-        })
-    }
+	info() {
+		return http.request<IUser>({
+			url: "get",
+			method: "GET",
+		});
+	}
+	login(data: any) {
+		return http.request<ILogin>({
+			url: "login",
+			method: "POST",
+			data,
+		});
+	}
 }
 
-export default new userApi()
+export default new userApi();

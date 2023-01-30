@@ -60,7 +60,7 @@ function getRouteByModule(
         component: module.default,
     } as RouteRecordRaw;
 
-    console.log("module.default", module.default.route);
+    // console.log("module.default", module.default.route);
 
     return Object.assign(route, module.default.route);
 }
