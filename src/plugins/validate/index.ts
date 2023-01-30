@@ -5,6 +5,7 @@ import { localize } from "@vee-validate/i18n";
 import yup from './yup'
 
 veeValidate.configure({
+    // validateOnInput:true,
     generateMessage: localize('zh_CN', zh_CN)
 })
 

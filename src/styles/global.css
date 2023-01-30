@@ -1,0 +1,7 @@
+
+.yh-input {
+    @apply border w-full rounded-sm py-1 px-2 border-gray-200 placeholder:text-xs outline-none focus:ring-2 ring-offset-2 ring-violet-600 duration-300 focus:border-white;
+}
+.yh-error{
+    @apply rounded-md bg-pink-500 text-white text-sm px-2 mt-2 py-1
+}

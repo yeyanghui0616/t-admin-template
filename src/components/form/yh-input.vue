@@ -11,7 +11,12 @@ const props = withDefaults(defineProps<Props>(), {
     <input
         type="text"
         :value="modelValue"
-        @input="$emit('update:modelValue', ($event.target as any).value)"
+        @input="
+            $emit(
+                'update:modelValue',
+                ($event.target as HTMLInputElement).value
+            )
+        "
     />
 </template>
 
