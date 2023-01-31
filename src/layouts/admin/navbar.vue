@@ -1,9 +1,8 @@
 <script setup lang="ts"></script>
 
 <template>
-	home.vue
+    
 
-	<el-button>aaqa</el-button>
 </template>
 
 <style lang="scss" scoped></style>
