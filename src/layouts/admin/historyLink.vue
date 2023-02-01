@@ -10,6 +10,24 @@ const links = reactive<{ title: string }[]>([
 	{
 		title: "用户管理",
 	},
+	{
+		title: "编辑器",
+	},
+	{
+		title: "订单列表",
+	},
+	{
+		title: "用户管理",
+	},
+	{
+		title: "编辑器",
+	},
+	{
+		title: "订单列表",
+	},
+	{
+		title: "用户管理",
+	},
 ]);
 </script>
 
