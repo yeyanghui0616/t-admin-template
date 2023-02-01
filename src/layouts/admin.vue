@@ -1,15 +1,22 @@
 <script setup lang="ts">
 import MenuComponent from "@/layouts/admin/menu.vue";
 import NavBar from "@/layouts/admin/navbar.vue";
+import Historylink from "@/layouts/admin/historyLink.vue";
 </script>
 
 <template>
 	<div class="admin h-screen w-screen flex">
 		<!-- 侧边菜单 -->
 		<MenuComponent />
-		<div class="content flex-1 bg-gray-200">
+		<div class="content flex-1 bg-gray-100">
+			<!-- 面包屑 -->
 			<NavBar />
-			<router-view />
+			<!-- 历史导航 -->
+			<Historylink />
+			<!-- 页面主体 -->
+			<div class="m-3 p-5 bg-white">
+				<router-view />
+			</div>
 		</div>
 	</div>
 </template>
