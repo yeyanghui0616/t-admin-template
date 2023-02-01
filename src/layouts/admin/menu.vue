@@ -72,17 +72,17 @@ const handle = (pmemu: IMenuItem, cmenu?: IMenuItem) => {
 					</section>
 					<section>
 						<i
-							:class="[
-								'fas',
-								menu.active ? 'fa-angle-up' : 'fa-angle-down',
-							]"></i>
+							class="fas fa-angle-down duration-500"
+							:class="{ 'rotate-180': menu.active }"
+						></i>
 					</section>
 				</dt>
 				<dd
 					v-show="menu.active"
 					:class="{ active: cmenu.active }"
 					v-for="(cmenu, index) in menu.children"
-					:key="index">
+					:key="index"
+				>
 					{{ cmenu.title }}
 				</dd>
 			</dl>
@@ -104,7 +104,7 @@ const handle = (pmemu: IMenuItem, cmenu?: IMenuItem) => {
 			}
 		}
 		dd {
-			@apply duration-300 py-3 pl-4 my-2  hover:bg-violet-500  text-white rounded-md cursor-pointer;
+			@apply duration-300 py-3 pl-4 my-2  hover:bg-violet-500  text-white rounded-md cursor-pointer bg-gray-700;
 			&.active {
 				@apply bg-violet-700;
 			}

@@ -5,16 +5,16 @@ import Historylink from "@/layouts/admin/historyLink.vue";
 </script>
 
 <template>
-	<div class="admin h-screen w-screen flex">
+	<div class="admin h-min-screen w-screen flex bg-gray-100">
 		<!-- 侧边菜单 -->
-		<MenuComponent />
-		<div class="content flex-1 bg-gray-100">
+		<MenuComponent class="hidden md:block" />
+		<div class="content flex-1">
 			<!-- 面包屑 -->
 			<NavBar />
 			<!-- 历史导航 -->
 			<Historylink />
 			<!-- 页面主体 -->
-			<div class="m-3 p-5 bg-white">
+			<div class="m-5">
 				<router-view />
 			</div>
 		</div>

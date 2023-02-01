@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { nextTick, reactive } from "vue";
+import { echart1, echart2 } from "./echarts";
 
 interface ICard {
 	title: string;
@@ -46,31 +47,14 @@ const cards = reactive<ICard[]>([
 ]);
 
 nextTick(() => {
-	// 基于准备好的dom，初始化echarts实例
-	var myChart = echarts.init(document.getElementById("echart1"));
 	// 绘制图表
-	myChart.setOption({
-		title: {
-			text: "ECharts 入门示例",
-		},
-		tooltip: {},
-		xAxis: {
-			data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"],
-		},
-		yAxis: {},
-		series: [
-			{
-				name: "销量",
-				type: "bar",
-				data: [5, 20, 36, 10, 10, 20],
-			},
-		],
-	});
+	echarts.init(document.getElementById("echart1")).setOption(echart1);
+	echarts.init(document.getElementById("echart2")).setOption(echart2);
 });
 </script>
 
 <template>
-	<div class="grid grid-flow-col gap-3">
+	<div class="grid md:grid-cols-4 gap-3 bg-gray-100">
 		<el-card
 			shadow="hover"
 			:body-style="{ padding: '20px' }"
@@ -99,13 +83,19 @@ nextTick(() => {
 		</el-card>
 	</div>
 
-	<div>
-		<section>
-			<div
-				id="echart1"
-				class="grid justify-items-center items-center"
-			></div>
-		</section>
+	<div class="p-3 mt-5 grid md:grid-cols-2 gap-3">
+		<el-card shadow="always" :body-style="{ padding: '20px' }">
+			<template #header>
+				<div>用户统计</div>
+			</template>
+			<div id="echart1" class="w-full h-52"></div>
+		</el-card>
+		<el-card shadow="always" :body-style="{ padding: '20px' }">
+			<template #header>
+				<div>销售额</div>
+			</template>
+			<div id="echart2" class="w-full h-52"></div>
+		</el-card>
 	</div>
 </template>
 
