@@ -3,6 +3,11 @@ export default {
 	name: "editor",
 	path: "/editor",
 	component: () => import("@/layouts/editor.vue"),
+	meta: {
+		title: "编辑器",
+		icon: "fab fa-canadian-maple-leaf",
+		show: true,
+	},
 	children: [
 		{
 			name: "editor.base",

@@ -16,7 +16,6 @@ export default {
 			const result = JSON.parse(item);
 			const expire = result.expire;
 			if (expire && expire < new Date().getTime()) {
-				console.log("已经过期了");
 				// 已经过期了
 				localStorage.removeItem(key);
 				return null;

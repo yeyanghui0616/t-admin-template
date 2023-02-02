@@ -14,7 +14,6 @@ const router = useRouter();
 const { Form, Field, ErrorMessage } = v;
 
 const onSubmit = async (values: any) => {
-	console.log("values", values);
 	const {
 		result: { token },
 	} = await userApi.login(values);
@@ -48,7 +47,8 @@ export default {
 <template>
 	<Form @submit="onSubmit" :validation-schema="schema" #default="{ errors }">
 		<div
-			class="w-[720px] translate-y-32 md:translate-y-0 bg-white rounded-md md:grid grid-cols-2 shadow-md">
+			class="w-[720px] translate-y-32 md:translate-y-0 bg-white rounded-md md:grid grid-cols-2 shadow-md"
+		>
 			<div class="p-6 flex flex-col justify-between">
 				<div>
 					<h2 class="text-center test-gray-700 text-lg mt-3">
@@ -62,7 +62,8 @@ export default {
 							class="yh-input"
 							label="用户名"
 							placeholder="请输入邮箱或手机号"
-							value="yh@qq.com" />
+							value="yh@qq.com"
+						/>
 						<div v-if="errors.account" class="yh-error">
 							{{ errors.account }}
 						</div>
@@ -73,7 +74,8 @@ export default {
 							class="yh-input mt-3"
 							label="密码"
 							type="password"
-							value="zxcvbnm000" />
+							value="zxcvbnm000"
+						/>
 						<div v-if="errors.password" class="yh-error">
 							{{ errors.password }}
 						</div>
@@ -84,7 +86,8 @@ export default {
 					<yh-button class="w-full" />
 					<div class="flex justify-center mt-5">
 						<i
-							class="fab fa-weixin bg-green-600 text-white rounded-full p-1 cursor-pointer"></i>
+							class="fab fa-weixin bg-green-600 text-white rounded-full p-1 cursor-pointer"
+						></i>
 					</div>
 				</div>
 				<div class="flex gap-3 justify-center mt-5">
@@ -97,7 +100,8 @@ export default {
 			<div class="hidden md:block relative">
 				<img
 					src="/images/login.jpg"
-					class="absolute h-full w-full object-cover" />
+					class="absolute h-full w-full object-cover"
+				/>
 			</div>
 		</div>
 	</Form>

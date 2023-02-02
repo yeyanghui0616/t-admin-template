@@ -4,9 +4,6 @@ import router from "@/store/router";
 
 const routerStore = router();
 
-console.log("routerStore", routerStore.yh);
-console.log("routerStore11", routerStore.get);
-
 interface IMenuItem {
 	title: string;
 	icon?: string;

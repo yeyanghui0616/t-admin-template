@@ -5,7 +5,6 @@ import { IData } from "@/utils/store";
 class Guard {
 	constructor(private router: Router) {}
 	public run() {
-		console.log("run....", this.router);
 		this.router.beforeEach((to, from) => {
 			/**
 			 * 当访问(admin/validate.vue)的时候，会匹配到两个路由
