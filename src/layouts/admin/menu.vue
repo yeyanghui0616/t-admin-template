@@ -1,61 +1,72 @@
 <script setup lang="ts">
 import { reactive } from "vue";
-import router from "@/store/router";
+import routerPinia from "@/store/router";
+import { RouteRecordNormalized, RouteRecordRaw, useRouter } from "vue-router";
 
-const routerStore = router();
+const routerStore = routerPinia();
 
-interface IMenuItem {
-	title: string;
-	icon?: string;
-	active?: boolean;
-}
+const router = useRouter();
 
-interface IMenu extends IMenuItem {
-	children?: IMenuItem[];
-}
+// interface IMenuItem {
+// 	title: string;
+// 	icon?: string;
+// 	active?: boolean;
+// }
 
-const menus = reactive<IMenu[]>([
-	{
-		title: "错误页面",
-		active: true,
-		icon: "fab fa-accessible-icon",
-		children: [
-			{
-				title: "404",
-				active: true,
-			},
-			{
-				title: "403",
-			},
-			{
-				title: "500",
-			},
-		],
-	},
-	{
-		title: "编辑器",
-		icon: "fab fa-affiliatetheme",
-		children: [
-			{
-				title: "markdown编辑器",
-			},
-			{
-				title: "富文本编辑器",
-			},
-		],
-	},
-]);
+// interface IMenu extends IMenuItem {
+// 	children?: IMenuItem[];
+// }
+
+// const menus = reactive<IMenu[]>([
+// 	{
+// 		title: "错误页面",
+// 		active: true,
+// 		icon: "fab fa-accessible-icon",
+// 		children: [
+// 			{
+// 				title: "404",
+// 				active: true,
+// 			},
+// 			{
+// 				title: "403",
+// 			},
+// 			{
+// 				title: "500",
+// 			},
+// 		],
+// 	},
+// 	{
+// 		title: "编辑器",
+// 		icon: "fab fa-affiliatetheme",
+// 		children: [
+// 			{
+// 				title: "markdown编辑器",
+// 			},
+// 			{
+// 				title: "富文本编辑器",
+// 			},
+// 		],
+// 	},
+// ]);
 
 const resetMenus = () => {
-	menus.forEach((pmenu) => {
-		pmenu.active = false;
-		pmenu.children?.forEach((cmenu) => (cmenu.active = false));
+	routerStore.routes.forEach((route) => {
+		route.meta.isClick = false;
+		route.children?.forEach((cRoute) => {
+			if (cRoute.meta) {
+				cRoute.meta.isClick = false;
+			}
+		});
 	});
 };
 
-const handle = (pmemu: IMenuItem, cmenu?: IMenuItem) => {
+const handle = (pRoute: RouteRecordNormalized, cRoute?: RouteRecordRaw) => {
 	resetMenus();
-	pmemu.active = true;
+	pRoute.meta.isClick = true;
+	if (cRoute && cRoute.meta) {
+		cRoute.meta.isClick = true;
+		router.push(cRoute);
+	}
 };
 </script>
 
@@ -67,26 +78,27 @@ const handle = (pmemu: IMenuItem, cmenu?: IMenuItem) => {
 		</div>
 		<!-- 菜单 -->
 		<div class="left-container">
-			<dl v-for="(menu, index) of menus" :key="index">
-				<dt @click="handle(menu)">
+			<dl v-for="(route, index) of routerStore.routes" :key="index">
+				<dt @click="handle(route)">
 					<section>
-						<i :class="menu.icon"></i>
-						<span class="text-sm">{{ menu.title }}</span>
+						<i :class="route.meta.icon"></i>
+						<span class="text-sm">{{ route.meta.title }}</span>
 					</section>
 					<section>
 						<i
 							class="fas fa-angle-down duration-500"
-							:class="{ 'rotate-180': menu.active }"
+							:class="{ 'rotate-180': route.meta.isClick }"
 						></i>
 					</section>
 				</dt>
 				<dd
-					v-show="menu.active"
-					:class="{ active: cmenu.active }"
-					v-for="(cmenu, index) in menu.children"
+					v-show="route.meta.isClick"
+					:class="{ active: childRoute.meta?.isClick }"
+					v-for="(childRoute, index) in route.children"
 					:key="index"
+					@click="handle(route, childRoute)"
 				>
-					{{ cmenu.title }}
+					{{ childRoute.meta?.title }}
 				</dd>
 			</dl>
 		</div>

@@ -2,10 +2,10 @@ import { RouteRecordRaw } from "vue-router";
 export default {
 	name: "error",
 	path: "/error",
-	component: () => import("@/layouts/errors.vue"),
+	component: () => import("@/layouts/admin.vue"),
 	meta: {
 		title: "错误页面",
-		icon: "fab fa-canadian-maple-leaf",
+		icon: "fab fa-accessible-icon",
 		show: true,
 	},
 	children: [
@@ -15,7 +15,6 @@ export default {
 			component: () => import("@/views/errors/404.vue"),
 			meta: {
 				title: "404",
-				icon: "fab fa-canadian-maple-leaf",
 				show: false,
 			},
 		},
@@ -30,7 +29,6 @@ export default {
 			component: () => import("@/views/errors/500.vue"),
 			meta: {
 				title: "404",
-				icon: "fab fa-canadian-maple-leaf",
 				show: true,
 			},
 		},

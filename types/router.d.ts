@@ -9,5 +9,7 @@ declare module "vue-router" {
 		show?: boolean; // 当前路由，菜单栏是否显示
 		title?: string; // 菜单标题
 		icon?: string; // 菜单图标
+		isClick?: boolean; // 是否被选中
+		permission?: stirng[]; // 可访问权限
 	}
 }
