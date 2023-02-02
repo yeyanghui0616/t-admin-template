@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import * as echarts from "echarts";
 import { nextTick, reactive } from "vue";
 import { echart1, echart2 } from "./echarts";
 
@@ -48,8 +49,12 @@ const cards = reactive<ICard[]>([
 
 nextTick(() => {
 	// 绘制图表
-	echarts.init(document.getElementById("echart1")).setOption(echart1);
-	echarts.init(document.getElementById("echart2")).setOption(echart2);
+	echarts
+		.init(document.getElementById("echart1") as HTMLElement)
+		.setOption(echart1);
+	echarts
+		.init(document.getElementById("echart2") as HTMLElement)
+		.setOption(echart2);
 });
 </script>
 
@@ -65,9 +70,7 @@ nextTick(() => {
 			<template #header>
 				<div class="flex justify-between items-center">
 					<span>{{ card.title }}</span>
-					<el-tag type="danger" size="mini" effect="dark">
-						月
-					</el-tag>
+					<el-tag type="danger" effect="dark"> 月 </el-tag>
 				</div>
 			</template>
 

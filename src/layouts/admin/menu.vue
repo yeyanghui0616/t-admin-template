@@ -1,5 +1,11 @@
 <script setup lang="ts">
 import { reactive } from "vue";
+import router from "@/store/router";
+
+const routerStore = router();
+
+console.log("routerStore", routerStore.yh);
+console.log("routerStore11", routerStore.get);
 
 interface IMenuItem {
 	title: string;

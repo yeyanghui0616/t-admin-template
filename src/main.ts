@@ -4,6 +4,8 @@ import router, { setupRouter } from "@/router";
 import { setupPlugins } from "./plugins";
 import "@/styles/global.scss";
 
+// console.log("import.meta.env", import.meta\u200b.env.VITE_APP_TITLE);
+
 async function bootStrap() {
 	const app = createApp(App);
 	setupRouter(app);
