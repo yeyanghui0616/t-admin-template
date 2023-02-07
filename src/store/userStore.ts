@@ -1,4 +1,3 @@
-import { useRouter } from "vue-router";
 import userApi, { IUser } from "@/api/userApi";
 import { defineStore } from "pinia";
 

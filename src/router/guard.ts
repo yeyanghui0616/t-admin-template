@@ -1,7 +1,8 @@
-import { store } from "@/utils";
+import util from "@/utils";
 import { Router, RouteLocationNormalized } from "vue-router";
 import { IData } from "@/utils/store";
-import userPinia from "@/store/user";
+import userPinia from "@/store/userStore";
+import { CacheEnum } from "@/enum/cacheEnum";
 
 class Guard {
 	constructor(private router: Router) {}
@@ -32,7 +33,7 @@ class Guard {
 	}
 
 	private token(): IData | null {
-		return store.get("token");
+		return util.store.get(CacheEnum.TOKEN_NAME);
 	}
 
 	// 是否是游客

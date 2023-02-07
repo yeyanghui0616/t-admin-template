@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import userPinia from "@/store/user";
+import userPinia from "@/store/userStore.js";
+import util from "@/utils";
 const userStore = userPinia();
 </script>
 
@@ -20,18 +21,21 @@ const userStore = userPinia();
 				userStore.userinfo?.name
 			}}</span>
 			<section
-				class="group-hover:block absolute top-full bg-white shadow-sm px-5 whitespace-nowrap border rounded-md hidden"
+				class="group- hover:block absolute top-full bg-white shadow-sm px-5 whitespace-nowrap border rounded-md hidden"
 			>
 				<div class="flex items-center cursor-pointer border-b py-3">
-					<a class="fas fa-ad"></a>
-					<span class="text-xs text-gray-600 ml-2">网站首页</span>
+					<i class="fa-regular fa-file"></i>
+					<span class="text-xs text-gray-600 ml-2">文档中心</span>
 				</div>
 				<div class="flex items-center cursor-pointer py-3">
-					<a class="fas fa-ad"></a>
+					<i class="fa-regular fa-user"></i>
 					<span class="text-xs text-gray-600 ml-2">用户管理</span>
 				</div>
-				<div class="flex items-center cursor-pointer py-3">
-					<a class="fas fa-ad"></a>
+				<div
+					class="flex items-center cursor-pointer py-3"
+					@click="util.user.logout()"
+				>
+					<i class="fa-solid fa-arrow-right-from-bracket"></i>
 					<span class="text-xs text-gray-600 ml-2">退出登录</span>
 				</div>
 			</section>

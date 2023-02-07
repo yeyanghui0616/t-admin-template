@@ -1,27 +1,31 @@
 export interface IData {
 	expire?: number;
-	[key: string]: any;
+	data: any;
 }
 
 export default {
-	set(key: string, data: IData) {
-		if (data.expire) {
-			data.expire = new Date().getTime() + data.expire * 1000;
+	set(key: string, data: any, expire?: number) {
+		let cache: IData = { data };
+		if (expire) {
+			cache.expire = new Date().getTime() + data.expire * 1000;
 		}
-		localStorage.setItem(key, JSON.stringify(data));
+		localStorage.setItem(key, JSON.stringify(cache));
 	},
-	get(key: string): IData | null {
-		const item = localStorage.getItem(key);
-		if (item) {
-			const result = JSON.parse(item);
-			const expire = result.expire;
+	get(key: string): any {
+		const cacheStore = localStorage.getItem(key);
+		if (cacheStore) {
+			const cache = JSON.parse(cacheStore);
+			const expire = cache.expire;
 			if (expire && expire < new Date().getTime()) {
 				// 已经过期了
 				localStorage.removeItem(key);
 				return null;
 			}
-			return result;
+			return cache.data;
 		}
 		return null;
+	},
+	remove(key: string) {
+		localStorage.removeItem(key);
 	},
 };

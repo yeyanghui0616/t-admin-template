@@ -9,6 +9,11 @@ interface ILogin {
 	token: string;
 }
 
+export interface ILoginData {
+	account: string;
+	password: string;
+}
+
 class userApi {
 	info() {
 		return http.request<IUser>({
@@ -16,7 +21,7 @@ class userApi {
 			method: "GET",
 		});
 	}
-	login(data: any) {
+	login(data: ILoginData) {
 		return http.request<ILogin>({
 			url: "login",
 			method: "POST",

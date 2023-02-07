@@ -1,26 +1,11 @@
 <script setup lang="ts">
-// import { reactive } from "vue";
-// const form = reactive<{ username: string | number; password: string }>({
-//     username: "",
-//     password: "",
-// });
-
-import userApi from "@/api/userApi";
 import v from "@/plugins/validate";
-import { store } from "@/utils";
-import { useRouter } from "vue-router";
-const router = useRouter();
+import utils from "@/utils";
 
 const { Form, Field, ErrorMessage } = v;
 
 const onSubmit = async (values: any) => {
-	const {
-		result: { token },
-	} = await userApi.login(values);
-	// store.set("token", { expire: 3, token });
-	store.set("token", { token });
-	router.push("/");
-	// localStorage.setItem("token", token);
+	utils.user.login(values);
 };
 
 // 方式一
