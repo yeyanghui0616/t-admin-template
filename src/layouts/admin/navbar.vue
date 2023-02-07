@@ -21,7 +21,7 @@ const userStore = userPinia();
 				userStore.userinfo?.name
 			}}</span>
 			<section
-				class="group- hover:block absolute top-full bg-white shadow-sm px-5 whitespace-nowrap border rounded-md hidden"
+				class="group-hover:block absolute top-full bg-white shadow-sm px-5 whitespace-nowrap border rounded-md hidden"
 			>
 				<div class="flex items-center cursor-pointer border-b py-3">
 					<i class="fa-regular fa-file"></i>

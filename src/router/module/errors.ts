@@ -16,7 +16,7 @@ export default {
 			component: () => import("@/views/errors/404.vue"),
 			meta: {
 				title: "404",
-				show: false,
+				show: true,
 			},
 		},
 		{
@@ -29,7 +29,7 @@ export default {
 			path: "500",
 			component: () => import("@/views/errors/500.vue"),
 			meta: {
-				title: "404",
+				title: "500",
 				show: true,
 			},
 		},
