@@ -5,7 +5,7 @@ import Historylink from "@/layouts/admin/historyLink.vue";
 </script>
 
 <template>
-	<div class="admin h-min-screen w-screen flex bg-gray-100">
+	<div class="admin min-h-screen w-screen flex bg-gray-100">
 		<!-- 侧边菜单 -->
 		<MenuComponent class="hidden md:block" />
 		<div class="content flex-1">

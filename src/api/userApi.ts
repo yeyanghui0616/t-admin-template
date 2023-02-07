@@ -1,6 +1,6 @@
 import { http } from "@/plugins/axios";
 
-interface IUser {
+export interface IUser {
 	name: string;
 	age?: number;
 	avator?: string;
@@ -12,7 +12,7 @@ interface ILogin {
 class userApi {
 	info() {
 		return http.request<IUser>({
-			url: "get",
+			url: "user/info",
 			method: "GET",
 		});
 	}

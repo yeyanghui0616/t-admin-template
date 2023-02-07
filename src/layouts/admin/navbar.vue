@@ -1,4 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import userPinia from "@/store/user";
+const userStore = userPinia();
+</script>
 
 <template>
 	<div class="bg-white py-3 px-5 flex justify-between items-center">
@@ -10,10 +13,12 @@
 			class="flex justify-center items-center relative group cursor-pointer"
 		>
 			<img
-				src="/images/login.jpg"
+				:src="userStore.userinfo?.avator"
 				class="w-8 h-8 rounded-full object-cover"
 			/>
-			<span class="ml-2 text-sm text-gray-600">小小叶</span>
+			<span class="ml-2 text-sm text-gray-600">{{
+				userStore.userinfo?.name
+			}}</span>
 			<section
 				class="group-hover:block absolute top-full bg-white shadow-sm px-5 whitespace-nowrap border rounded-md hidden"
 			>

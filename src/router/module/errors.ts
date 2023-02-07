@@ -7,6 +7,7 @@ export default {
 		title: "错误页面",
 		icon: "fab fa-accessible-icon",
 		show: true,
+		auth: true,
 	},
 	children: [
 		{

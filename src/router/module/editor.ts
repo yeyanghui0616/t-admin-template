@@ -7,6 +7,7 @@ export default {
 		title: "编辑器",
 		icon: "fab fa-canadian-maple-leaf",
 		show: true,
+		auth: true,
 	},
 	children: [
 		{
