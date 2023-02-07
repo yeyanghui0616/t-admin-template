@@ -45,7 +45,13 @@ class Guard {
 
 	// 是否登陆
 	private isLogin(route: RouteLocationNormalized): boolean {
-		return Boolean(!route.meta.auth || (route.meta.auth && this.token()));
+		const state = Boolean(
+			!route.meta.auth || (route.meta.auth && this.token())
+		);
+		if (!state) {
+			util.store.set(CacheEnum.REDIRECT_ROUTE_NAME, route.name);
+		}
+		return state;
 	}
 }
 

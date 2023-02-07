@@ -9,12 +9,12 @@ export async function login(values: ILoginData) {
 		result: { token },
 	} = await userApi.login(values);
 	store.set(CacheEnum.TOKEN_NAME, { token });
-	router.push("/");
-	// localStorage.setItem("token", token);
+
+	const routeName = store.get(CacheEnum.REDIRECT_ROUTE_NAME) || "/";
+	router.push(routeName);
 }
 
 export function logout() {
-	console.log(11111111);
 	store.remove(CacheEnum.TOKEN_NAME);
 	router.push("/");
 	userStore().userinfo = null;
