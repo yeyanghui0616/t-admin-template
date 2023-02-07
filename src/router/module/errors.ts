@@ -4,10 +4,11 @@ export default {
 	path: "/error",
 	component: () => import("@/layouts/admin.vue"),
 	meta: {
-		title: "错误页面",
-		icon: "fab fa-accessible-icon",
-		show: true,
 		auth: true,
+		menu: {
+			title: "错误页面",
+			icon: "fab fa-accessible-icon",
+		}, // 只要有menu这个属性，这个菜单就在后台显示
 	},
 	children: [
 		{
@@ -15,8 +16,7 @@ export default {
 			path: "404",
 			component: () => import("@/views/errors/404.vue"),
 			meta: {
-				title: "404",
-				show: true,
+				menu: { title: "404" },
 			},
 		},
 		{
@@ -29,8 +29,7 @@ export default {
 			path: "500",
 			component: () => import("@/views/errors/500.vue"),
 			meta: {
-				title: "500",
-				show: true,
+				menu: { title: "500" },
 			},
 		},
 	],

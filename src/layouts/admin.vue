@@ -2,6 +2,9 @@
 import MenuComponent from "@/layouts/admin/menu.vue";
 import NavBar from "@/layouts/admin/navbar.vue";
 import Historylink from "@/layouts/admin/historyLink.vue";
+import menuStore from "@/store/menuStore";
+
+menuStore().init();
 </script>
 
 <template>
