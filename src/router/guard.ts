@@ -27,8 +27,6 @@ class Guard {
 		if (!this.isLogin(to)) return { name: "login" };
 		if (!this.isGuest(to)) return from;
 		await this.getUserInfo();
-
-		menuStore().addHistoryMenu(to);
 	}
 
 	private getUserInfo() {

@@ -3,8 +3,17 @@ import MenuComponent from "@/layouts/admin/menu.vue";
 import NavBar from "@/layouts/admin/navbar.vue";
 import Historylink from "@/layouts/admin/historyLink.vue";
 import menuStore from "@/store/menuStore";
+import { onBeforeRouteUpdate, useRoute } from "vue-router";
+
+const route = useRoute();
 
 menuStore().init();
+
+onBeforeRouteUpdate(() => {
+	menuStore().addHistoryMenu(route);
+});
+
+// 记录历史路由
 </script>
 
 <template>
@@ -19,7 +28,6 @@ menuStore().init();
 			<!-- 页面主体 -->
 			<div class="m-5">
 				<router-view #default="{ Component }">
-					<!--- TODO 目前不好使 -->
 					<!-- <Transition
 						enter-active-class="animate__animated animate__fadeInRight"
 					> -->

@@ -71,7 +71,7 @@ const handle = (pMenu: IMenu, cMenu?: IMenu) => {
 	<div class="menu w-[200px] bg-gray-800 p-4">
 		<div class="logo text-gray-300 flex items-center">
 			<i class="fas fa-blog text-fuchsia-300 mr-2 text-[25px]"></i>
-			<span class="text-md letter-2 tracking-widest"> 每晚8点学习 </span>
+			<span class="text-md letter-2 tracking-widest"> 管理平台模版 </span>
 		</div>
 		<!-- 菜单 -->
 		<div class="left-container">
