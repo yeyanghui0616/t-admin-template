@@ -18,16 +18,13 @@ menuStore().init();
 			<Historylink />
 			<!-- 页面主体 -->
 			<div class="m-5">
-				<router-view v-slot="{ Component, route }">
+				<router-view #default="{ Component }">
 					<!--- TODO 目前不好使 -->
-					<Transition
-						appear
-						enter-active-class="animate__animated animate__bounceInRight"
-					>
-						<div :key="route.path">
-							<component :is="Component" />
-						</div>
-					</Transition>
+					<!-- <Transition
+						enter-active-class="animate__animated animate__fadeInRight"
+					> -->
+					<component :is="Component" />
+					<!-- </Transition> -->
 				</router-view>
 			</div>
 		</div>

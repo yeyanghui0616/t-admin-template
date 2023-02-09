@@ -7,6 +7,7 @@ specifiers:
   '@vee-validate/i18n': ^4.7.3
   '@vee-validate/rules': ^4.7.3
   '@vitejs/plugin-vue': ^4.0.0
+  animate.css: ^4.1.1
   autoprefixer: ^10.4.13
   axios: ^1.2.3
   echarts: ^5.4.1
@@ -30,6 +31,7 @@ specifiers:
 dependencies:
   '@vee-validate/i18n': 4.7.3
   '@vee-validate/rules': 4.7.3
+  animate.css: 4.1.1
   axios: 1.2.6
   echarts: 5.4.1
   element-plus: 2.2.28_vue@3.2.45
@@ -568,6 +570,10 @@ packages:
     engines: {node: '>=0.4.0'}
     hasBin: true
     dev: true
+
+  /animate.css/4.1.1:
+    resolution: {integrity: sha512-+mRmCTv6SbCmtYJCN4faJMNFVNN5EuCTTprDTAo7YzIGji2KADmakjVA3+8mVDkZ2Bf09vayB35lSQIex2+QaQ==}
+    dev: false
 
   /ansi-styles/4.3.0:
     resolution: {integrity: sha512-zbB9rCJAT1rbjiVDb2hqKFHNYLxgtk8NURxZ3IZwD3F6NtxbXZQCnnSi1Lkx+IDohdPlFp222wVALIheZJQSEg==}

@@ -3,6 +3,7 @@ import App from "./App.vue";
 import router, { setupRouter } from "@/router";
 import { setupPlugins } from "./plugins";
 import "@/styles/global.scss";
+import "animate.css";
 
 async function bootStrap() {
 	const app = createApp(App);

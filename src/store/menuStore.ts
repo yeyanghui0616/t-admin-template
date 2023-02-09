@@ -1,4 +1,4 @@
-import { useRouter } from "vue-router";
+import { RouteLocationNormalized, useRouter } from "vue-router";
 import { IMenu } from "#/menu";
 import { defineStore } from "pinia";
 import router from "@/router";
@@ -6,8 +6,20 @@ import router from "@/router";
 export default defineStore("menu", {
 	state: () => ({
 		menus: [] as IMenu[],
+		historyMenu: [] as IMenu[],
 	}),
 	actions: {
+		addHistoryMenu(route: RouteLocationNormalized) {
+			const menu: IMenu = {
+				...route.meta.menu,
+				route: route.name as string,
+			};
+			const isHas = this.historyMenu.some(
+				(menu) => menu.route === route.name
+			);
+			if (!isHas) this.historyMenu.push(menu);
+		},
+
 		init() {
 			this.getMenuByRoute();
 		},

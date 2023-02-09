@@ -2,7 +2,7 @@
 
 <template>
 	<!-- component -->
-	<div class="w-full h-screen flex flex-col items-center justify-center">
+	<div class="w-full h-full flex flex-col items-center justify-center">
 		<svg
 			class="w-1/2 md:1/3 lg:w-1/4 text-blue-600"
 			xmlns="http://www.w3.org/2000/svg"
