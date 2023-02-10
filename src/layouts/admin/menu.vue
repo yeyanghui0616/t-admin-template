@@ -1,6 +1,13 @@
 <script setup lang="ts">
 import menuService from "@/composables/menu";
+import { watch } from "vue";
+import { useRoute } from "vue-router";
+const route = useRoute();
+menuService.setCurrentMenu(route);
 
+watch(route, () => menuService.setCurrentMenu(route), { immediate: true });
+
+// 使用pinia完成的，暂时不用
 // import { IMenu } from "#/menu";
 // import menuPinia from "@/store/menuStore.js";
 // import router from "@/router";
@@ -70,13 +77,31 @@ import menuService from "@/composables/menu";
 </script>
 
 <template>
-	<div class="menu w-[200px] bg-gray-800 p-4">
-		<div class="logo text-gray-300 flex items-center">
+	<div
+		class="menu w-[200px] bg-gray-800 p-4"
+		:class="{ close: menuService.close.value }"
+	>
+		<div class="logo">
 			<i class="fas fa-blog text-fuchsia-300 mr-2 text-[25px]"></i>
 			<span class="text-md letter-2 tracking-widest"> 管理平台模版 </span>
 		</div>
 		<!-- 菜单 -->
-		<div class="left-container">
+		<div class="container">
+			<dl>
+				<dt
+					@click="$router.push('/admin')"
+					class="p-3"
+					:class="{
+						'bg-violet-600 text-white  rounded-md':
+							$route.name === 'admin.home',
+					}"
+				>
+					<section>
+						<i class="fab fa-angrycreative"></i>
+						<span class="text-sm">dashboard</span>
+					</section>
+				</dt>
+			</dl>
 			<dl v-for="(menu, index) of menuService.menus.value" :key="index">
 				<dt @click="menu.isClick = true">
 					<section>
@@ -105,24 +130,64 @@ import menuService from "@/composables/menu";
 </template>
 
 <style lang="scss" scoped>
-.left-container {
-	dl {
-		@apply text-gray-300 text-sm;
-		dt {
-			@apply mt-6 flex justify-between cursor-pointer items-center text-sm;
-			section {
-				@apply flex items-center;
-				i {
-					@apply mr-2 text-sm;
+.menu {
+	.logo {
+		@apply text-gray-300 flex items-center;
+	}
+	.container {
+		dl {
+			@apply text-gray-300 text-sm;
+			dt {
+				@apply mt-6 flex justify-between cursor-pointer items-center text-sm;
+				section {
+					@apply flex items-center;
+					i {
+						@apply mr-2 text-sm;
+					}
+				}
+			}
+			dd {
+				@apply duration-300 py-3 pl-4 my-2  hover:bg-violet-500  text-white rounded-md cursor-pointer bg-gray-700;
+				&.active {
+					@apply bg-violet-700;
 				}
 			}
 		}
-		dd {
-			@apply duration-300 py-3 pl-4 my-2  hover:bg-violet-500  text-white rounded-md cursor-pointer bg-gray-700;
-			&.active {
-				@apply bg-violet-700;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.close {
+		width: auto;
+		.logo {
+			span {
+				@apply hidden;
 			}
 		}
+		.container {
+			dl {
+				dt {
+					@apply flex justify-center;
+					section {
+						span {
+							@apply hidden;
+						}
+						i {
+							@apply m-0;
+						}
+						&:nth-child(2) {
+							@apply hidden;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.menu {
+		@apply h-screen w-[200px] absolute left-0 top-0 z-50;
 	}
 }
 </style>

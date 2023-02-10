@@ -17,9 +17,9 @@ onBeforeRouteUpdate(() => {
 </script>
 
 <template>
-	<div class="admin h-screen w-screen grid grid-cols-[auto_1fr]">
+	<div class="admin h-screen w-screen grid md:grid-cols-[auto_1fr]">
 		<!-- 侧边菜单 -->
-		<MenuComponent class="hidden md:block" />
+		<MenuComponent />
 		<div class="content bg-gray-100 grid grid-rows-[auto_1fr]">
 			<div>
 				<!-- 面包屑 -->
@@ -28,7 +28,7 @@ onBeforeRouteUpdate(() => {
 				<Historylink />
 			</div>
 			<!-- 页面主体 -->
-			<div class="p-5 relative overflow-y-auto overflow-x-hidden">
+			<div class="md:p-5 m-3 relative overflow-y-auto overflow-x-hidden">
 				<router-view #default="{ Component, route }">
 					<Transition
 						appear

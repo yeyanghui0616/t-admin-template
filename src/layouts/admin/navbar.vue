@@ -1,15 +1,31 @@
 <script setup lang="ts">
 import userPinia from "@/store/userStore.js";
 import util from "@/utils";
+import menuService from "@/composables/menu";
 const userStore = userPinia();
 </script>
 
 <template>
 	<div class="bg-white py-3 px-5 flex justify-between items-center">
-		<el-breadcrumb separator="/">
-			<el-breadcrumb-item :to="{ path: '/' }">编辑器</el-breadcrumb-item>
-			<el-breadcrumb-item>富文本编辑器</el-breadcrumb-item>
-		</el-breadcrumb>
+		<div class="flex ml-2 items-center">
+			<div @click="menuService.toggleState">
+				<i
+					v-if="menuService.close.value"
+					class="fas fa-square-caret-left mr-2 text-gray-600 cursor-pointer"
+				></i>
+				<i
+					v-else
+					class="fas fa-square-caret-right mr-2 text-gray-600 cursor-pointer"
+				></i>
+			</div>
+			<el-breadcrumb separator="/">
+				<el-breadcrumb-item :to="{ path: '/' }"
+					>编辑器</el-breadcrumb-item
+				>
+				<el-breadcrumb-item>富文本编辑器</el-breadcrumb-item>
+			</el-breadcrumb>
+		</div>
+
 		<div
 			class="flex justify-center items-center relative group cursor-pointer"
 		>

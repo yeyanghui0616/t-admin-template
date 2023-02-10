@@ -1,3 +1,4 @@
+import { RouteLocationNormalizedLoaded } from "vue-router";
 import { nextTick, ref } from "vue";
 import { IMenu } from "#/menu";
 import router from "@/router";
@@ -7,10 +8,29 @@ import { CacheEnum } from "@/enum/cacheEnum";
 class Menu {
 	public menus = ref<IMenu[]>([]);
 	public history = ref<IMenu[]>([]);
+	public close = ref<boolean>(true);
+
 	constructor() {
 		nextTick(() => {
 			this.menus.value = this.getMenuByRoute();
 			this.history.value = store.get(CacheEnum.HISTORY_MENU) ?? [];
+		});
+	}
+
+	toggleState() {
+		this.close.value = !this.close.value;
+	}
+
+	setCurrentMenu(route: RouteLocationNormalizedLoaded) {
+		this.menus.value.forEach((item) => {
+			item.isClick = false;
+			item.children?.forEach((c) => {
+				c.isClick = false;
+				if (c.route === route.name) {
+					item.isClick = true;
+					c.isClick = true;
+				}
+			});
 		});
 	}
 
