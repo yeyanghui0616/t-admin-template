@@ -1,70 +1,72 @@
 <script setup lang="ts">
-import { IMenu } from "#/menu";
-import menuPinia from "@/store/menuStore.js";
-import router from "@/router";
-const menuStore = menuPinia();
+import menuService from "@/composables/menu";
 
-// interface IMenuItem {
-// 	title: string;
-// 	icon?: string;
-// 	active?: boolean;
-// }
+// import { IMenu } from "#/menu";
+// import menuPinia from "@/store/menuStore.js";
+// import router from "@/router";
+// const menuStore = menuPinia();
 
-// interface IMenu extends IMenuItem {
-// 	children?: IMenuItem[];
-// }
+// // interface IMenuItem {
+// // 	title: string;
+// // 	icon?: string;
+// // 	active?: boolean;
+// // }
 
-// const menus = reactive<IMenu[]>([
-// 	{
-// 		title: "错误页面",
-// 		active: true,
-// 		icon: "fab fa-accessible-icon",
-// 		children: [
-// 			{
-// 				title: "404",
-// 				active: true,
-// 			},
-// 			{
-// 				title: "403",
-// 			},
-// 			{
-// 				title: "500",
-// 			},
-// 		],
-// 	},
-// 	{
-// 		title: "编辑器",
-// 		icon: "fab fa-affiliatetheme",
-// 		children: [
-// 			{
-// 				title: "markdown编辑器",
-// 			},
-// 			{
-// 				title: "富文本编辑器",
-// 			},
-// 		],
-// 	},
-// ]);
+// // interface IMenu extends IMenuItem {
+// // 	children?: IMenuItem[];
+// // }
 
-const resetMenus = () => {
-	menuStore.menus.forEach((menu) => {
-		menu.isClick = false;
-		menu.children?.forEach((cmenu) => {
-			if (cmenu) {
-				cmenu.isClick = false;
-			}
-		});
-	});
-};
+// // const menus = reactive<IMenu[]>([
+// // 	{
+// // 		title: "错误页面",
+// // 		active: true,
+// // 		icon: "fab fa-accessible-icon",
+// // 		children: [
+// // 			{
+// // 				title: "404",
+// // 				active: true,
+// // 			},
+// // 			{
+// // 				title: "403",
+// // 			},
+// // 			{
+// // 				title: "500",
+// // 			},
+// // 		],
+// // 	},
+// // 	{
+// // 		title: "编辑器",
+// // 		icon: "fab fa-affiliatetheme",
+// // 		children: [
+// // 			{
+// // 				title: "markdown编辑器",
+// // 			},
+// // 			{
+// // 				title: "富文本编辑器",
+// // 			},
+// // 		],
+// // 	},
+// // ]);
 
-const handle = (pMenu: IMenu, cMenu?: IMenu) => {
-	resetMenus();
-	pMenu.isClick = true;
-	if (cMenu) {
-		cMenu.isClick = true;
-		router.push({ name: cMenu.route });
-	}
-};
+// const resetMenus = () => {
+// 	menuStore.menus.forEach((menu) => {
+// 		menu.isClick = false;
+// 		menu.children?.forEach((cmenu) => {
+// 			if (cmenu) {
+// 				cmenu.isClick = false;
+// 			}
+// 		});
+// 	});
+// };
+
+// const handle = (pMenu: IMenu, cMenu?: IMenu) => {
+// 	resetMenus();
+// 	pMenu.isClick = true;
+// 	if (cMenu) {
+// 		cMenu.isClick = true;
+// 		router.push({ name: cMenu.route });
+// 	}
+// };
 </script>
 
 <template>
@@ -75,8 +77,8 @@ const handle = (pMenu: IMenu, cMenu?: IMenu) => {
 		</div>
 		<!-- 菜单 -->
 		<div class="left-container">
-			<dl v-for="(menu, index) of menuStore.menus" :key="index">
-				<dt @click="handle(menu)">
+			<dl v-for="(menu, index) of menuService.menus.value" :key="index">
+				<dt @click="menu.isClick = true">
 					<section>
 						<i :class="menu.icon"></i>
 						<span class="text-sm">{{ menu.title }}</span>
@@ -93,7 +95,7 @@ const handle = (pMenu: IMenu, cMenu?: IMenu) => {
 					:class="{ active: cmenu.isClick }"
 					v-for="(cmenu, index) in menu.children"
 					:key="index"
-					@click="handle(menu, cmenu)"
+					@click="$router.push({ name: cmenu.route })"
 				>
 					{{ cmenu.title }}
 				</dd>

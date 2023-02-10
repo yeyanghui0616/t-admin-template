@@ -9,5 +9,7 @@ declare module "vue-router" {
 		guest?: boolean; // 当前路由，游客是否可以访问
 		permission?: stirng[]; // 可访问权限
 		menu?: IMenu; // 菜单
+		enterClass?: string; // 当前路由进入动画
+		leaveClass?: string; // 当前路由离开动画
 	}
 }

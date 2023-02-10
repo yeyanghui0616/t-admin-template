@@ -17,22 +17,31 @@ onBeforeRouteUpdate(() => {
 </script>
 
 <template>
-	<div class="admin min-h-screen w-screen flex bg-gray-100">
+	<div class="admin h-screen w-screen grid grid-cols-[auto_1fr]">
 		<!-- 侧边菜单 -->
 		<MenuComponent class="hidden md:block" />
-		<div class="content flex-1">
-			<!-- 面包屑 -->
-			<NavBar />
-			<!-- 历史导航 -->
-			<Historylink />
+		<div class="content bg-gray-100 grid grid-rows-[auto_1fr]">
+			<div>
+				<!-- 面包屑 -->
+				<NavBar />
+				<!-- 历史导航 -->
+				<Historylink />
+			</div>
 			<!-- 页面主体 -->
-			<div class="m-5">
-				<router-view #default="{ Component }">
-					<!-- <Transition
-						enter-active-class="animate__animated animate__fadeInRight"
-					> -->
-					<component :is="Component" />
-					<!-- </Transition> -->
+			<div class="p-5 relative overflow-y-auto overflow-x-hidden">
+				<router-view #default="{ Component, route }">
+					<Transition
+						appear
+						class="animate__animated"
+						:enter-active-class="
+							route.meta.enterClass ?? 'animate__fadeInRight'
+						"
+						:leave-active-class="
+							route.meta.leaveClass ?? 'animate__fadeOutLeft'
+						"
+					>
+						<component :is="Component" class="absolute w-full" />
+					</Transition>
 				</router-view>
 			</div>
 		</div>
@@ -51,3 +60,12 @@ export default {
 	},
 };
 </script>
+
+<style scoped lang="scss">
+.animate__fadeInRight {
+	animation-duration: 0.5s;
+}
+.animate__fadeOutLeft {
+	animation-duration: 0.3s;
+}
+</style>
