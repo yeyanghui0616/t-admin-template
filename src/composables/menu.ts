@@ -8,12 +8,19 @@ import { CacheEnum } from "@/enum/cacheEnum";
 class Menu {
 	public menus = ref<IMenu[]>([]);
 	public history = ref<IMenu[]>([]);
-	public close = ref<boolean>(true);
+	public close = ref<boolean>(false);
 
 	constructor() {
 		nextTick(() => {
 			this.menus.value = this.getMenuByRoute();
 			this.history.value = store.get(CacheEnum.HISTORY_MENU) ?? [];
+		});
+	}
+
+	toggleParentMenu(menu: IMenu) {
+		this.menus.value.forEach((m) => {
+			m.isClick = false;
+			if (m === menu) m.isClick = true;
 		});
 	}
 
@@ -36,7 +43,6 @@ class Menu {
 
 	// 根据路由获取菜单
 	getMenuByRoute() {
-		console.log("router", router);
 		return router
 			.getRoutes()
 			.filter((route) => route.children.length && route.meta.menu)

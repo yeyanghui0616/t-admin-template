@@ -77,11 +77,8 @@ watch(route, () => menuService.setCurrentMenu(route), { immediate: true });
 </script>
 
 <template>
-	<div class="admin-menu">
-		<div
-			class="menu w-[200px] bg-gray-800"
-			:class="{ close: menuService.close.value }"
-		>
+	<div class="admin-menu" :class="{ close: menuService.close.value }">
+		<div class="menu w-[200px] bg-gray-800">
 			<div class="logo">
 				<i class="fas fa-blog text-fuchsia-300 mr-2 text-[25px]"></i>
 				<span class="text-md letter-2 tracking-widest">
@@ -108,7 +105,7 @@ watch(route, () => menuService.setCurrentMenu(route), { immediate: true });
 					v-for="(menu, index) of menuService.menus.value"
 					:key="index"
 				>
-					<dt @click="menu.isClick = true">
+					<dt @click="menuService.toggleParentMenu(menu)">
 						<section>
 							<i :class="menu.icon"></i>
 							<span class="text-sm">{{ menu.title }}</span>
@@ -120,9 +117,14 @@ watch(route, () => menuService.setCurrentMenu(route), { immediate: true });
 							></i>
 						</section>
 					</dt>
-					<dd>
+					<dd
+						:class="
+							!menu.isClick || menuService.close.value
+								? 'hidden'
+								: 'block'
+						"
+					>
 						<div
-							v-show="menu.isClick"
 							:class="{ active: cmenu.isClick }"
 							v-for="(cmenu, index) in menu.children"
 							:key="index"
@@ -134,12 +136,13 @@ watch(route, () => menuService.setCurrentMenu(route), { immediate: true });
 				</dl>
 			</div>
 		</div>
-		<div class="bg block md:hidden"></div>
+		<div class="bg block md:hidden" @click="menuService.toggleState"></div>
 	</div>
 </template>
 
 <style lang="scss" scoped>
 .admin-menu {
+	@apply z-20;
 	.menu {
 		@apply h-full;
 		.logo {
@@ -147,9 +150,9 @@ watch(route, () => menuService.setCurrentMenu(route), { immediate: true });
 		}
 		.container {
 			dl {
-				@apply text-gray-300 text-sm;
+				@apply text-gray-300 text-sm relative p-4;
 				dt {
-					@apply flex justify-between cursor-pointer items-center text-sm p-4;
+					@apply flex justify-between cursor-pointer items-center text-sm;
 					section {
 						@apply flex items-center;
 						i {
@@ -171,26 +174,40 @@ watch(route, () => menuService.setCurrentMenu(route), { immediate: true });
 }
 
 @media screen and (min-width: 768px) {
-	.close {
-		width: auto;
-		.logo {
-			span {
-				@apply hidden;
-			}
-		}
-		.container {
-			dl {
-				dt {
-					@apply flex justify-center;
-					section {
-						span {
-							@apply hidden;
+	.admin-menu {
+		&.close {
+			.menu {
+				width: auto;
+				.logo {
+					@apply justify-center;
+					i {
+						@apply mr-0;
+					}
+					span {
+						@apply hidden;
+					}
+				}
+				.container {
+					dl {
+						dt {
+							@apply flex justify-center;
+							section {
+								span {
+									@apply hidden;
+								}
+								i {
+									@apply m-0;
+								}
+								&:nth-child(2) {
+									@apply hidden;
+								}
+							}
 						}
-						i {
-							@apply m-0;
-						}
-						&:nth-child(2) {
-							@apply hidden;
+						&:hover {
+							dd {
+								display: block !important;
+								@apply absolute left-full top-0 w-[200px] bg-gray-700;
+							}
 						}
 					}
 				}
@@ -207,6 +224,9 @@ watch(route, () => menuService.setCurrentMenu(route), { immediate: true });
 		}
 		.bg {
 			@apply bg-gray-500 opacity-75 w-screen h-screen z-40 left-0 top-0 absolute;
+		}
+		&.close {
+			@apply hidden;
 		}
 	}
 }
