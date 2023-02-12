@@ -2,6 +2,8 @@
 import userPinia from "@/store/userStore.js";
 import util from "@/utils";
 import menuService from "@/composables/menu";
+import Notification from "@/composables/notification.vue";
+
 const userStore = userPinia();
 
 const fullScreen = () => {
@@ -30,36 +32,40 @@ const fullScreen = () => {
 			</el-breadcrumb>
 		</div>
 
-		<div
-			class="flex justify-center items-center relative group cursor-pointer"
-		>
+		<div class="flex justify-center items-center relative cursor-pointer">
+			<Notification class="mr-8" />
+
 			<i @click="fullScreen" class="fas fa-border-none mr-2"></i>
-			<img
-				:src="userStore.userinfo?.avator"
-				class="w-8 h-8 rounded-full object-cover"
-			/>
-			<span class="ml-2 text-sm text-gray-600">{{
-				userStore.userinfo?.name
-			}}</span>
-			<section
-				class="group-hover:block absolute top-full bg-white shadow-sm px-5 whitespace-nowrap border rounded-md hidden"
-			>
-				<div class="flex items-center cursor-pointer border-b py-3">
-					<i class="fa-regular fa-file"></i>
-					<span class="text-xs text-gray-600 ml-2">文档中心</span>
+			<div class="group relative">
+				<div class="flex justify-center items-center">
+					<img
+						:src="userStore.userinfo?.avator"
+						class="w-8 h-8 rounded-full object-cover"
+					/>
+					<span class="ml-2 text-sm text-gray-600">{{
+						userStore.userinfo?.name
+					}}</span>
 				</div>
-				<div class="flex items-center cursor-pointer py-3">
-					<i class="fa-regular fa-user"></i>
-					<span class="text-xs text-gray-600 ml-2">用户管理</span>
-				</div>
-				<div
-					class="flex items-center cursor-pointer py-3"
-					@click="util.user.logout()"
+				<section
+					class="group-hover:block z-50 absolute right-0 top-full bg-white shadow-sm px-5 whitespace-nowrap border rounded-md hidden"
 				>
-					<i class="fa-solid fa-arrow-right-from-bracket"></i>
-					<span class="text-xs text-gray-600 ml-2">退出登录</span>
-				</div>
-			</section>
+					<div class="flex items-center cursor-pointer border-b py-3">
+						<i class="fa-regular fa-file"></i>
+						<span class="text-xs text-gray-600 ml-2">文档中心</span>
+					</div>
+					<div class="flex items-center cursor-pointer py-3">
+						<i class="fa-regular fa-user"></i>
+						<span class="text-xs text-gray-600 ml-2">用户管理</span>
+					</div>
+					<div
+						class="flex items-center cursor-pointer py-3"
+						@click="util.user.logout()"
+					>
+						<i class="fa-solid fa-arrow-right-from-bracket"></i>
+						<span class="text-xs text-gray-600 ml-2">退出登录</span>
+					</div>
+				</section>
+			</div>
 		</div>
 	</div>
 </template>
