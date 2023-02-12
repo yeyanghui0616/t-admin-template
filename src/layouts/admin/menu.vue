@@ -77,79 +77,93 @@ watch(route, () => menuService.setCurrentMenu(route), { immediate: true });
 </script>
 
 <template>
-	<div
-		class="menu w-[200px] bg-gray-800 p-4"
-		:class="{ close: menuService.close.value }"
-	>
-		<div class="logo">
-			<i class="fas fa-blog text-fuchsia-300 mr-2 text-[25px]"></i>
-			<span class="text-md letter-2 tracking-widest"> 管理平台模版 </span>
-		</div>
-		<!-- 菜单 -->
-		<div class="container">
-			<dl>
-				<dt
-					@click="$router.push('/admin')"
-					class="p-3"
-					:class="{
-						'bg-violet-600 text-white  rounded-md':
-							$route.name === 'admin.home',
-					}"
-				>
-					<section>
-						<i class="fab fa-angrycreative"></i>
-						<span class="text-sm">dashboard</span>
-					</section>
-				</dt>
-			</dl>
-			<dl v-for="(menu, index) of menuService.menus.value" :key="index">
-				<dt @click="menu.isClick = true">
-					<section>
-						<i :class="menu.icon"></i>
-						<span class="text-sm">{{ menu.title }}</span>
-					</section>
-					<section>
-						<i
-							class="fas fa-angle-down duration-500"
-							:class="{ 'rotate-180': menu.isClick }"
-						></i>
-					</section>
-				</dt>
-				<dd
-					v-show="menu.isClick"
-					:class="{ active: cmenu.isClick }"
-					v-for="(cmenu, index) in menu.children"
+	<div class="admin-menu">
+		<div
+			class="menu w-[200px] bg-gray-800"
+			:class="{ close: menuService.close.value }"
+		>
+			<div class="logo">
+				<i class="fas fa-blog text-fuchsia-300 mr-2 text-[25px]"></i>
+				<span class="text-md letter-2 tracking-widest">
+					管理平台模版
+				</span>
+			</div>
+			<!-- 菜单 -->
+			<div class="container">
+				<dl>
+					<dt
+						@click="$router.push('/admin')"
+						:class="{
+							'bg-violet-600 text-white  rounded-md p-3':
+								$route.name === 'admin.home',
+						}"
+					>
+						<section>
+							<i class="fab fa-angrycreative"></i>
+							<span class="text-sm">dashboard</span>
+						</section>
+					</dt>
+				</dl>
+				<dl
+					v-for="(menu, index) of menuService.menus.value"
 					:key="index"
-					@click="$router.push({ name: cmenu.route })"
 				>
-					{{ cmenu.title }}
-				</dd>
-			</dl>
+					<dt @click="menu.isClick = true">
+						<section>
+							<i :class="menu.icon"></i>
+							<span class="text-sm">{{ menu.title }}</span>
+						</section>
+						<section>
+							<i
+								class="fas fa-angle-down duration-500"
+								:class="{ 'rotate-180': menu.isClick }"
+							></i>
+						</section>
+					</dt>
+					<dd>
+						<div
+							v-show="menu.isClick"
+							:class="{ active: cmenu.isClick }"
+							v-for="(cmenu, index) in menu.children"
+							:key="index"
+							@click="$router.push({ name: cmenu.route })"
+						>
+							{{ cmenu.title }}
+						</div>
+					</dd>
+				</dl>
+			</div>
 		</div>
+		<div class="bg block md:hidden"></div>
 	</div>
 </template>
 
 <style lang="scss" scoped>
-.menu {
-	.logo {
-		@apply text-gray-300 flex items-center;
-	}
-	.container {
-		dl {
-			@apply text-gray-300 text-sm;
-			dt {
-				@apply mt-6 flex justify-between cursor-pointer items-center text-sm;
-				section {
-					@apply flex items-center;
-					i {
-						@apply mr-2 text-sm;
+.admin-menu {
+	.menu {
+		@apply h-full;
+		.logo {
+			@apply text-gray-300 flex items-center p-4;
+		}
+		.container {
+			dl {
+				@apply text-gray-300 text-sm;
+				dt {
+					@apply flex justify-between cursor-pointer items-center text-sm p-4;
+					section {
+						@apply flex items-center;
+						i {
+							@apply mr-2 text-sm;
+						}
 					}
 				}
-			}
-			dd {
-				@apply duration-300 py-3 pl-4 my-2  hover:bg-violet-500  text-white rounded-md cursor-pointer bg-gray-700;
-				&.active {
-					@apply bg-violet-700;
+				dd {
+					div {
+						@apply duration-300 py-3 pl-4 my-2  hover:bg-violet-500  text-white rounded-md cursor-pointer bg-gray-700;
+						&.active {
+							@apply bg-violet-700;
+						}
+					}
 				}
 			}
 		}
@@ -186,8 +200,14 @@ watch(route, () => menuService.setCurrentMenu(route), { immediate: true });
 }
 
 @media screen and (max-width: 768px) {
-	.menu {
-		@apply h-screen w-[200px] absolute left-0 top-0 z-50;
+	.admin-menu {
+		@apply h-screen w-[200px] absolute left-0 top-0;
+		.menu {
+			@apply h-full z-50 absolute;
+		}
+		.bg {
+			@apply bg-gray-500 opacity-75 w-screen h-screen z-40 left-0 top-0 absolute;
+		}
 	}
 }
 </style>
