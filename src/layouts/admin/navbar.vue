@@ -2,7 +2,8 @@
 import userPinia from "@/store/userStore.js";
 import util from "@/utils";
 import menuService from "@/composables/menu";
-import Notification from "@/composables/notification.vue";
+import Notification from "@/components/notification.vue";
+import Breadcrumb from "@/components/breadcrumb.vue";
 
 const userStore = userPinia();
 
@@ -24,12 +25,7 @@ const fullScreen = () => {
 					class="fas fa-square-caret-right mr-2 text-gray-600 cursor-pointer"
 				></i>
 			</div>
-			<el-breadcrumb separator="/">
-				<el-breadcrumb-item :to="{ path: '/' }"
-					>编辑器</el-breadcrumb-item
-				>
-				<el-breadcrumb-item>富文本编辑器</el-breadcrumb-item>
-			</el-breadcrumb>
+			<Breadcrumb class="hidden md:block" />
 		</div>
 
 		<div class="flex justify-center items-center relative cursor-pointer">

@@ -9,6 +9,7 @@ class Menu {
 	public menus = ref<IMenu[]>([]);
 	public history = ref<IMenu[]>([]);
 	public close = ref<boolean>(false);
+	public route = ref(null as RouteLocationNormalized);
 
 	constructor() {
 		nextTick(() => {
@@ -24,6 +25,8 @@ class Menu {
 
 	addHistoryMenu(route: RouteLocationNormalized) {
 		if (!route.meta?.menu) return;
+		this.route.value = route;
+
 		const menu: IMenu = {
 			...route.meta.menu,
 			route: route.name as string,
