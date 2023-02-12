@@ -5,13 +5,24 @@ import Historylink from "@/layouts/admin/historyLink.vue";
 import menuStore from "@/store/menuStore";
 import { onBeforeRouteUpdate, useRoute } from "vue-router";
 
+import { watch } from "vue";
+import menu from "@/composables/menu";
+
 const route = useRoute();
 
-menuStore().init();
+watch(
+	route,
+	() => {
+		menu.addHistoryMenu(route);
+	},
+	{ immediate: true }
+);
 
-onBeforeRouteUpdate(() => {
-	menuStore().addHistoryMenu(route);
-});
+// menuStore().init();
+
+// onBeforeRouteUpdate(() => {
+// 	menuStore().addHistoryMenu(route);
+// });
 
 // 记录历史路由
 </script>

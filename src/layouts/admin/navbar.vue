@@ -3,6 +3,10 @@ import userPinia from "@/store/userStore.js";
 import util from "@/utils";
 import menuService from "@/composables/menu";
 const userStore = userPinia();
+
+const fullScreen = () => {
+	document.documentElement.requestFullscreen();
+};
 </script>
 
 <template>
@@ -29,6 +33,7 @@ const userStore = userPinia();
 		<div
 			class="flex justify-center items-center relative group cursor-pointer"
 		>
+			<i @click="fullScreen" class="fas fa-border-none mr-2"></i>
 			<img
 				:src="userStore.userinfo?.avator"
 				class="w-8 h-8 rounded-full object-cover"
