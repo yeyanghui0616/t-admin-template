@@ -29,6 +29,7 @@ export default {
 				menu: {
 					title: "markdown",
 				},
+				permission: "editor_markdown",
 			},
 		},
 	],

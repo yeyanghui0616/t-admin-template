@@ -1,4 +1,7 @@
-import { RouteLocationNormalizedLoaded } from "vue-router";
+import {
+	RouteLocationNormalizedLoaded,
+	RouteLocationNormalized,
+} from "vue-router";
 import { nextTick, ref } from "vue";
 import { IMenu } from "#/menu";
 import router from "@/router";
@@ -9,7 +12,7 @@ class Menu {
 	public menus = ref<IMenu[]>([]);
 	public history = ref<IMenu[]>([]);
 	public close = ref<boolean>(false);
-	public route = ref(null as RouteLocationNormalized);
+	public route = ref(null as unknown as RouteLocationNormalized);
 
 	constructor() {
 		nextTick(() => {

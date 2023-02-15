@@ -12,6 +12,7 @@ export default [
 				result: {
 					name: "小小22叶",
 					avator: "/images/login.jpg",
+					permissions: ["editor_markdown", "article_edit"],
 				},
 			};
 		},

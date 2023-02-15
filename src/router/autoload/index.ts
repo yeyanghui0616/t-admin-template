@@ -1,4 +1,4 @@
-import { RouteRecordRaw } from "vue-router";
+import { RouteRecordRaw, Router } from "vue-router";
 import util from "@/utils";
 import getRoutes from "./view";
 import autoloadModuleRoutes from "./module";
@@ -11,6 +11,13 @@ if (util.env.VITE_ROUTER_AUTOLOAD) {
 	routes = autoloadModuleRoutes();
 }
 
+function autoload(router: Router) {
+	// 获取用户资料
+	routes.forEach((route) => {
+		router.addRoute(route);
+	});
+}
+
 // TODO 通过权限过滤掉路由
 
-export default routes;
+export default autoload;
