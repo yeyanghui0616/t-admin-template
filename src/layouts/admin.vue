@@ -8,8 +8,7 @@ import { onBeforeRouteUpdate, useRoute } from "vue-router";
 import { watch } from "vue";
 import menu from "@/composables/menu";
 
-const route = useRoute();
-
+const route = useRoute()
 watch(
 	route,
 	() => {
