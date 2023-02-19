@@ -17,7 +17,7 @@ export default {
 			component: () => import("@/views/editor/base.vue"),
 			meta: {
 				menu: {
-					title: "基础",
+					title: "富文本编辑器",
 				},
 			},
 		},

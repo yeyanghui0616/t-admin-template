@@ -26,6 +26,7 @@ console.log("menuService", menuService.history.value);
 				</router-link>
 				<i
 					class="fas fa-xmark ml-1 cursor-pointer hover:text-yellow-400"
+					@click="menuService.removeHistoryMenu(hMenu)"
 				></i>
 			</div>
 		</div>
