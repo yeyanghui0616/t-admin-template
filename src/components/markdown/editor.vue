@@ -34,5 +34,15 @@ nextTick(() => {
 	.toastui-editor-mode-switch {
 		display: none !important;
 	}
+	.fullscreen {
+		// @apply fixed left-0 top-0 right-0 bottom-0 bg-white z-50;
+		position: fixed;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		top: 0;
+		z-index: 999;
+		background-color: #fff;
+	}
 }
 </style>

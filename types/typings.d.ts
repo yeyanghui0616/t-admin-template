@@ -6,5 +6,7 @@ declare namespace toastui {
 		getHTML: () => string;
 		removeHook: (type: string) => void;
 		addHook: (type: string, handler: Function) => void;
+		setHeight: (height: string) => void;
+		focus: () => void;
 	}
 }
