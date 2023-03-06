@@ -1,5 +1,38 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { nextTick } from "vue";
+import ToastEditor from "./toastEditor";
 
-<template>daskjlsa jdhsaj</template>
+interface IProps {
+	modelValue?: string;
+	height: number;
+	placeholder?: string;
+}
 
-<style lang="scss" scoped></style>
+const props = withDefaults(defineProps<IProps>(), {
+	modelValue: "",
+	height: 500,
+	placeholder: "please input content",
+});
+
+const emit = defineEmits(["update:modelValue"]);
+
+nextTick(() => {
+	const toastUi = new ToastEditor("#editor", `${props.modelValue}`, `${props.height}px `);
+	toastUi.editor.on("change", (type: string) => {
+		emit("update:modelValue", toastUi.editor[type === "markdown" ? "getMarkdown" : "getHTML"]());
+	});
+});
+</script>
+
+<template>
+	<div id="editor"></div>
+</template>
+
+<style lang="scss" scoped>
+#editor {
+	@apply bg-white;
+	.toastui-editor-mode-switch {
+		display: none !important;
+	}
+}
+</style>
