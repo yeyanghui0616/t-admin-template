@@ -10,3 +10,14 @@ declare namespace toastui {
 		focus: () => void;
 	}
 }
+
+declare class wangEditor {
+	constructor(el: string);
+	config: {
+		[key: string]: any;
+	};
+	txt: {
+		[key: string]: any;
+	};
+	create: () => void;
+}

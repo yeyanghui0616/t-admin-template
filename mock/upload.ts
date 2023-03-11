@@ -10,7 +10,7 @@ export default [
 				message: "上传成功",
 				type: "success",
 				result: {
-					url: "https://img-blog.csdnimg.cn/20210414153605959.png",
+					url: "/images/login.jpg",
 				},
 			};
 		},
