@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import wangEditor from "@/components/wangEditor/wangEditor";
 import v from "@/plugins/validate";
 import utils from "@/utils";
 
@@ -26,19 +27,20 @@ export default {
 		name: "login",
 		meta: { guest: true },
 	},
+	components: { wangEditor },
 };
 </script>
 
 <template>
-	<Form @submit="onSubmit" :validation-schema="schema" #default="{ errors }">
-		<div
-			class="w-[720px] translate-y-32 md:translate-y-0 bg-white rounded-md md:grid grid-cols-2 shadow-md"
-		>
+	<Form
+		@submit="onSubmit"
+		:validation-schema="schema"
+		#default="{ errors }"
+	>
+		<div class="w-[720px] translate-y-32 md:translate-y-0 bg-white rounded-md md:grid grid-cols-2 shadow-md">
 			<div class="p-6 flex flex-col justify-between">
 				<div>
-					<h2 class="text-center test-gray-700 text-lg mt-3">
-						会员登录
-					</h2>
+					<h2 class="text-center test-gray-700 text-lg mt-3">会员登录</h2>
 					<div class="mt-10">
 						<Field
 							name="account"
@@ -49,7 +51,10 @@ export default {
 							placeholder="请输入邮箱或手机号"
 							value="yh@qq.com"
 						/>
-						<div v-if="errors.account" class="yh-error">
+						<div
+							v-if="errors.account"
+							class="yh-error"
+						>
 							{{ errors.account }}
 						</div>
 						<!-- <ErrorMessage name="account" as="div" class="yh-error" /> -->
@@ -61,25 +66,26 @@ export default {
 							type="password"
 							value="zxcvbnm000"
 						/>
-						<div v-if="errors.password" class="yh-error">
+						<div
+							v-if="errors.password"
+							class="yh-error"
+						>
 							{{ errors.password }}
 						</div>
 						<!-- <ErrorMessage name="password" as="div" class="yh-error" /> -->
 						<!-- <yh-input placeholder="请输入用户名" />
                     <yh-input class="mt-5" placeholder="请输入密码" /> -->
 					</div>
-					<yh-button class="w-full" />
+					<YhButton class="w-full" />
 					<div class="flex justify-center mt-5">
-						<i
-							class="fab fa-weixin bg-green-600 text-white rounded-full p-1 cursor-pointer"
-						></i>
+						<i class="fab fa-weixin bg-green-600 text-white rounded-full p-1 cursor-pointer"></i>
 					</div>
 				</div>
 				<div class="flex gap-3 justify-center mt-5">
-					<yh-link>网站首页</yh-link>
-					<yh-link>会员注册</yh-link>
-					<yh-link>找回密码</yh-link>
-					<yh-link>哈哈哈哈</yh-link>
+					<YhLink>网站首页</YhLink>
+					<YhLink>会员注册</YhLink>
+					<YhLink>找回密码</YhLink>
+					<YhLink>哈哈哈哈</YhLink>
 				</div>
 			</div>
 			<div class="hidden md:block relative">
