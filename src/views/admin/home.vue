@@ -49,12 +49,8 @@ const cards = reactive<ICard[]>([
 
 nextTick(() => {
 	// 绘制图表
-	echarts
-		.init(document.getElementById("echart1") as HTMLElement)
-		.setOption(echart1);
-	echarts
-		.init(document.getElementById("echart2") as HTMLElement)
-		.setOption(echart2);
+	echarts.init(document.getElementById("echart1") as HTMLElement).setOption(echart1);
+	echarts.init(document.getElementById("echart2") as HTMLElement).setOption(echart2);
 });
 </script>
 
@@ -71,7 +67,12 @@ nextTick(() => {
 				<template #header>
 					<div class="flex justify-between items-center">
 						<span>{{ card.title }}</span>
-						<el-tag type="danger" effect="dark"> 月 </el-tag>
+						<el-tag
+							type="danger"
+							effect="dark"
+						>
+							月
+						</el-tag>
 					</div>
 				</template>
 
@@ -91,17 +92,29 @@ nextTick(() => {
 		</div>
 
 		<div class="mt-5 grid md:grid-cols-2 gap-3">
-			<el-card shadow="always" :body-style="{ padding: '20px' }">
+			<el-card
+				shadow="always"
+				:body-style="{ padding: '20px' }"
+			>
 				<template #header>
 					<div>用户统计</div>
 				</template>
-				<div id="echart1" class="w-full h-52"></div>
+				<div
+					id="echart1"
+					class="w-full h-52"
+				></div>
 			</el-card>
-			<el-card shadow="always" :body-style="{ padding: '20px' }">
+			<el-card
+				shadow="always"
+				:body-style="{ padding: '20px' }"
+			>
 				<template #header>
 					<div>销售额</div>
 				</template>
-				<div id="echart2" class="w-full h-52"></div>
+				<div
+					id="echart2"
+					class="w-full h-52"
+				></div>
 			</el-card>
 		</div>
 	</div>
