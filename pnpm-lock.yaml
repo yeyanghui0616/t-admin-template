@@ -12,6 +12,7 @@ specifiers:
   axios: ^1.2.3
   echarts: ^5.4.1
   element-plus: ^2.2.28
+  gsap: ^3.11.4
   lodash: ^4.17.21
   mockjs: ^1.1.0
   path: ^0.12.7
@@ -38,6 +39,7 @@ dependencies:
   axios: 1.2.6
   echarts: 5.4.1
   element-plus: 2.2.28_vue@3.2.45
+  gsap: 3.11.4
   lodash: 4.17.21
   mockjs: 1.1.0
   pinia: 2.0.30_prq2uz4lho2pwp6irk4cfkrxwu
@@ -1058,6 +1060,10 @@ packages:
     dependencies:
       is-glob: 4.0.3
     dev: true
+
+  /gsap/3.11.4:
+    resolution: {integrity: sha512-McHhEguHyExMMnjqKA8G+7TvxmlKQGMbjgwAilnFe1e4id7V/tFveRQ2YMZhTYu0oxHGWvbPltdVYQOu3z1SCA==}
+    dev: false
 
   /has-flag/4.0.0:
     resolution: {integrity: sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==}
