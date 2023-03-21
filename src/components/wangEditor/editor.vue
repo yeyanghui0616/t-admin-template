@@ -18,7 +18,7 @@ const emit = defineEmits(["update:modelValue"]);
 
 nextTick(() => {
 	new wangEditor(
-		"#editor",
+		"#wangEditor",
 		(newValue: string) => {
 			emit("update:modelValue", newValue);
 		},
@@ -28,7 +28,7 @@ nextTick(() => {
 </script>
 
 <template>
-	<div id="editor"></div>
+	<div id="wangEditor"></div>
 </template>
 
 <style lang="scss" scoped></style>

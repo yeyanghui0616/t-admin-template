@@ -7,7 +7,11 @@ import Breadcrumb from "@/components/breadcrumb.vue";
 
 const userStore = userPinia();
 
+let isFullScreen = false;
+
 const fullScreen = () => {
+	isFullScreen ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+	isFullScreen = !isFullScreen;
 	document.documentElement.requestFullscreen();
 };
 </script>
@@ -31,20 +35,19 @@ const fullScreen = () => {
 		<div class="flex justify-center items-center relative cursor-pointer">
 			<Notification class="mr-8" />
 
-			<i @click="fullScreen" class="fas fa-border-none mr-2"></i>
+			<i
+				@click="fullScreen"
+				class="fas fa-border-none mr-2"
+			></i>
 			<div class="group relative">
 				<div class="flex justify-center items-center">
 					<img
 						:src="userStore.userinfo?.avator"
 						class="w-8 h-8 rounded-full object-cover"
 					/>
-					<span class="ml-2 text-sm text-gray-600">{{
-						userStore.userinfo?.name
-					}}</span>
+					<span class="ml-2 text-sm text-gray-600">{{ userStore.userinfo?.name }}</span>
 				</div>
-				<section
-					class="group-hover:block z-50 absolute right-0 top-full bg-white shadow-sm px-5 whitespace-nowrap border rounded-md hidden"
-				>
+				<section class="group-hover:block z-50 absolute right-0 top-full bg-white shadow-sm px-5 whitespace-nowrap border rounded-md hidden">
 					<div class="flex items-center cursor-pointer border-b py-3">
 						<i class="fa-regular fa-file"></i>
 						<span class="text-xs text-gray-600 ml-2">文档中心</span>

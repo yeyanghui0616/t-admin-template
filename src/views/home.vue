@@ -11,7 +11,7 @@ const a = ref("1");
 		/>
 		<div>
 			<router-link
-				:to="{ name: 'admin.home' }"
+				:to="{ path: '/admin/home' }"
 				class="yh-button"
 			>
 				后台管理

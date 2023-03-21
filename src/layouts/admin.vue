@@ -8,7 +8,7 @@ import { onBeforeRouteUpdate, useRoute } from "vue-router";
 import { watch } from "vue";
 import menu from "@/composables/menu";
 
-const route = useRoute()
+const route = useRoute();
 watch(
 	route,
 	() => {
@@ -43,14 +43,13 @@ watch(
 					<Transition
 						appear
 						class="animate__animated"
-						:enter-active-class="
-							route.meta.enterClass ?? 'animate__fadeInRight'
-						"
-						:leave-active-class="
-							route.meta.leaveClass ?? 'animate__fadeOutLeft'
-						"
+						:enter-active-class="route.meta.enterClass ?? 'animate__fadeInRight'"
+						:leave-active-class="route.meta.leaveClass ?? 'animate__fadeOutLeft'"
 					>
-						<component :is="Component" class="absolute w-full" />
+						<component
+							:is="Component"
+							class="absolute w-full"
+						/>
 					</Transition>
 				</router-view>
 			</div>

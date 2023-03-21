@@ -77,13 +77,19 @@ watch(route, () => menuService.setCurrentMenu(route), { immediate: true });
 </script>
 
 <template>
-	<div class="admin-menu" :class="{ close: menuService.close.value }">
+	<div
+		class="admin-menu"
+		:class="{ close: menuService.close.value }"
+	>
 		<div class="menu w-[200px] bg-gray-800">
 			<div class="logo">
-				<i class="fas fa-blog text-fuchsia-300 mr-2 text-[25px]"></i>
-				<span class="text-md letter-2 tracking-widest">
-					管理平台模版
-				</span>
+				<icon-home
+					theme="outline"
+					size="20"
+					fill="#dcdcdc"
+				/>
+				<!-- <i class="fas fa-blog text-fuchsia-300 mr-2 text-[25px]"></i> -->
+				<span class="text-md letter-2 tracking-widest"> 管理平台模版 </span>
 			</div>
 			<!-- 菜单 -->
 			<div class="container">
@@ -103,13 +109,7 @@ watch(route, () => menuService.setCurrentMenu(route), { immediate: true });
 							></i>
 						</section>
 					</dt>
-					<dd
-						:class="
-							!menu.isClick || menuService.close.value
-								? 'hidden'
-								: 'block'
-						"
-					>
+					<dd :class="!menu.isClick || menuService.close.value ? 'hidden' : 'block'">
 						<div
 							:class="{ active: cmenu.isClick }"
 							v-for="(cmenu, index) in menu.children"
@@ -122,7 +122,10 @@ watch(route, () => menuService.setCurrentMenu(route), { immediate: true });
 				</dl>
 			</div>
 		</div>
-		<div class="bg block md:hidden" @click="menuService.toggleState"></div>
+		<div
+			class="bg block md:hidden"
+			@click="menuService.toggleState"
+		></div>
 	</div>
 </template>
 

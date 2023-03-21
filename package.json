@@ -9,6 +9,7 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
+		"@icon-park/vue-next": "^1.4.2",
 		"@vee-validate/i18n": "^4.7.3",
 		"@vee-validate/rules": "^4.7.3",
 		"animate.css": "^4.1.1",

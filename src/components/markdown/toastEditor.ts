@@ -5,7 +5,7 @@ export default class {
 	isFullscreen: boolean = false;
 	constructor(el: string, initialValue: string, public height: string) {
 		this.editor = new toastui.Editor({
-			el: document.querySelector("#editor"),
+			el: document.querySelector("#markdownEditor"),
 			initialEditType: "markdown",
 			previewStyle: "vertical",
 			height,
