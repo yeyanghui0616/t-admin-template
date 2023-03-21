@@ -1,10 +1,9 @@
-interface ImportMetaEnv extends ViteEnv {}
+interface ImportMetaEnv extends ViteEnv {
+	VITE_ROUTER_AUTOLOAD: boolean;
+	VITE_API_URL: string;
+	VITE_MOCK_ENABLE: boolean;
+}
 
 interface ImportMeta {
 	readonly env: ImportMetaEnv;
-}
-
-interface ViteEnv {
-	VITE_ROUTER_AUTOLOAD: boolean;
-	VITE_API_URL: string;
 }

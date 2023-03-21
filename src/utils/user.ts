@@ -6,10 +6,10 @@ import userStore from "@/store/userStore";
 
 export async function login(values: ILoginData) {
 	const {
-		result: { token },
+		data: { token },
 	} = await userApi.login(values);
 	store.set(CacheEnum.TOKEN_NAME, { token });
-
+	userStore().getUserInfo();
 	const routeName = store.get(CacheEnum.REDIRECT_ROUTE_NAME) || "/";
 	router.push(routeName);
 }
